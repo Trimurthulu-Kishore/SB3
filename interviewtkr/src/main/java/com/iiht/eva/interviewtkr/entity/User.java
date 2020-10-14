@@ -1,15 +1,25 @@
 package com.iiht.eva.interviewtkr.entity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "user")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jsonid")
 public class User {
     @Id
     @NotNull(message = "User id is required.")
+
     private int userId;
 
     @Column
@@ -24,9 +34,8 @@ public class User {
     @Column
     private String mobile;
 
-    public User(int userId) {
-        this.userId = userId;
-    }
+    @ManyToMany(mappedBy = "users")
+    private Set<Interview> interviews;
 
     public int getUserId() {
         return userId;
@@ -68,15 +77,12 @@ public class User {
         this.mobile = mobile;
     }
 
-    public User(int userId, @NotNull(message = "First Name is required") @NotBlank(message = "First name Should Not be  blank") @Size(min = 5, max = 30, message = "FName length should be between 5 to 30 Chars") String fname, @NotNull(message = "LName is required") @NotBlank(message = "LName can't be blank") @Size(min = 5, max = 25, message = "LName length should be between 3 to 25 Chars") String lName, @NotNull(message = "email is required") @NotBlank(message = "email can't be blank") String email, @NotNull(message = "mobile is required") @NotBlank(message = "mobile can't be blank") @Size(min = 10, max = 10, message = "mobile length should be between 10 Chars") String mobile) {
-        this.userId = userId;
-        this.fname = fname;
-        this.lName = lName;
-        this.email = email;
-        this.mobile = mobile;
+    public Set<Interview> getInterviews() {
+        return interviews;
     }
 
-    public User() {
+    public void setInterviews(Set<Interview> interviews) {
+        this.interviews = interviews;
     }
 
     @Override
@@ -87,6 +93,27 @@ public class User {
                 ", lName='" + lName + '\'' +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
+                ", interviews=" + interviews +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userId == user.userId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
+    }
+
+    public void copyUser(User user) {
+        this.setEmail(user.getEmail());
+        this.setFname(user.getFname());
+        this.setlName(user.getlName());
+        this.setMobile(user.getMobile());
     }
 }

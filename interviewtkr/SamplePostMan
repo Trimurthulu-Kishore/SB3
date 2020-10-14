@@ -1,0 +1,18 @@
+{
+        "userId": 5,
+        "fname": "Kishore5",
+        "lName": "Murthi K5",
+        "email": "maam5@gmail.com",
+        "mobile": "5559689999"
+}
+
+{
+        "interviewId": 4,
+        "interviewer": "Panel4",
+        "interviewName": "Q2E",
+        "skills": "QA,Development",
+        "time": "11:30",
+        "date": "2020-11-11",
+        "status": "Scheduled",
+        "remarks": "Priority"
+}

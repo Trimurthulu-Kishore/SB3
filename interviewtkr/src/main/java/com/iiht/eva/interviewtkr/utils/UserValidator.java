@@ -1,9 +1,8 @@
 package com.iiht.eva.interviewtkr.utils;
 
-import com.iiht.eva.interviewtkr.entity.User;
-
 import java.util.ArrayList;
 import java.util.List;
+import com.iiht.eva.interviewtkr.entity.User;
 
 public class UserValidator {
     private List<String> errors;
@@ -12,15 +11,15 @@ public class UserValidator {
         errors = new ArrayList<>();
         if (null != user) {
             if (user.getUserId() == 0)
-                errors.add("User Id shouldn't be 0");
+                errors.add("User Id is required and can't be 0");
 
             if (null != user.getFname()) {
                 int fNameLen = user.getFname().trim().length();
                 if (fNameLen != 0) {
                     if (fNameLen < 5 || fNameLen > 30)
-                        errors.add("First Name length should be min 5 and Max 30 Chars.");
+                        errors.add("FName length should be between 5 to 30 Chars.");
                 } else
-                    errors.add("First Name Shouldn't be Blank.");
+                    errors.add("First Name can't be blank.");
             } else
                 errors.add("First Name is required.");
 
@@ -28,9 +27,9 @@ public class UserValidator {
                 int lNameLen = user.getlName().trim().length();
                 if (lNameLen > 0) {
                     if (lNameLen < 3 || lNameLen > 25)
-                        errors.add("Last Name length should be min 3 and max 25 Chars.");
+                        errors.add("Last name length should be between 3 to 25 Chars.");
                 } else
-                    errors.add("Last Name Shouldn't be Blank.");
+                    errors.add("Last Name can't be blank.");
             } else
                 errors.add("Last Name is required.");
 
@@ -41,7 +40,7 @@ public class UserValidator {
                     if (!user.getEmail().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"))
                         errors.add("Email:" + user.getEmail() + " is invalid.");
                 } else
-                    errors.add("email Shouldn't be Blank.");
+                    errors.add("email can't be blank.");
             } else
                 errors.add("email is required.");
 
@@ -50,10 +49,10 @@ public class UserValidator {
                 if (!user.getMobile().matches("^\\d{10}$"))
                     errors.add("Mobile:" + user.getMobile() + " is invalid.");
             } else
-                errors.add("mobile number is required.");
+                errors.add("mobile is required.");
 
         } else
-            errors.add("User is Must");
+            errors.add("User is required");
 
         return !(errors.size() > 0);
     }
@@ -61,6 +60,4 @@ public class UserValidator {
     public List<String> getErrors() {
         return errors;
     }
-
-
 }
