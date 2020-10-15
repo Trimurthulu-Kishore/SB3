@@ -26,6 +26,7 @@ public class InterviewController {
     @Autowired
     InterviewService interviewService;
 
+    //List of Interviews
     @GetMapping({"", "/"})
     public List<Interview> getInterviews() {
         return interviewService.getInterviews();
@@ -61,12 +62,14 @@ public class InterviewController {
         return interviewService.updateInterviewStatus(interviewId,interviewStatus);
     }
 
+    //Interviews count
     @GetMapping("/count")
     public int getInterviewCount() {
 
         return interviewService.getInterviewsCount();
     }
 
+    //Body:{ "interviewId": 1, "interviewName": "Q2E", "interviewer": "Trimurthulu", "skills": "QA,Devlopment", "time": "21:16:33", "date": "2020-10-13", "status": "Confirmed", "remarks": "Urgent" }
     @PostMapping({"", "/"})
     public Interview addInterview(@RequestBody Interview interview) {
 
@@ -87,11 +90,13 @@ public class InterviewController {
         return interviewService.removeUsersFromInterview(interviewId, userId);
     }
 
+    //Update interview details
     @PutMapping({"", "/"})
     public Interview updateInterview(@RequestBody Interview interview) {
         return interviewService.updateInterview(interview);
     }
 
+    //Delete interview
     //http://localhost:9696/trackerapp/api/interviews/1
     @DeleteMapping({"/{id}"})
     public void deleteInterview(@PathVariable(value = "id") int id) {
