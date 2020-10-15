@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -17,12 +19,14 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jsonid")
 public class User {
-    @Id
+   
+	@Id
     @NotNull(message = "User id is required.")
-
     private int userId;
 
     @Column
+   // @NotEmpty(message = "Please enter FirstName")
+   //@Size(min = 5, max = 30,message = "First Name should be minimun 5 charecters and maximum 30 characters")
     private String fname;
 
     @Column

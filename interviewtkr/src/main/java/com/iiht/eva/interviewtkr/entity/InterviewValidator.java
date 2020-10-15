@@ -1,4 +1,4 @@
-package com.iiht.eva.interviewtkr.utils;
+package com.iiht.eva.interviewtkr.entity;
 
 import com.iiht.eva.interviewtkr.entity.Interview;
 

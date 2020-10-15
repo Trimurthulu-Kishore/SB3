@@ -3,19 +3,17 @@ package com.iiht.eva.interviewtkr.service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.iiht.eva.interviewtkr.dto.UserRepository;
 import com.iiht.eva.interviewtkr.entity.Interview;
 import com.iiht.eva.interviewtkr.entity.User;
 import com.iiht.eva.interviewtkr.exception.InvalidData;
-import com.iiht.eva.interviewtkr.utils.UserValidator;
+import com.iiht.eva.interviewtkr.entity.UserValidator;
 
 @Service
 public class UserServiceImpl implements UserService {

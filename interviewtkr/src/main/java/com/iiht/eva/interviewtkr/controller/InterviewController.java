@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.iiht.eva.interviewtkr.entity.Interview;
 import com.iiht.eva.interviewtkr.entity.User;
 import com.iiht.eva.interviewtkr.service.InterviewService;
 
-//http://localhost:9696/trackerapp/api/interviews
 
+
+//http://localhost:9696/trackerapp/api/interviews
 
 @RestController
 @RequestMapping("/api/interviews")
@@ -73,6 +73,7 @@ public class InterviewController {
         return interviewService.addInterview(interview);
     }
     
+    //Adding Attendee to a interview 
     //http://localhost:9696/trackerapp/api/interviews/addUsers/1/1
     @PutMapping({"/addUsers/{interviewId}/{userId}"})
     public Interview addUsers(@PathVariable(value = "interviewId") int interviewId, @PathVariable(value = "userId") int userId) {

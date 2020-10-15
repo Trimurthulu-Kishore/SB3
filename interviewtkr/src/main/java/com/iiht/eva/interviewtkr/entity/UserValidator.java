@@ -1,4 +1,4 @@
-package com.iiht.eva.interviewtkr.utils;
+package com.iiht.eva.interviewtkr.entity;
 
 import java.util.ArrayList;
 import java.util.List;

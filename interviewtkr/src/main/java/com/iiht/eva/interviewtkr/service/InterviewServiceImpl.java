@@ -4,7 +4,7 @@ import com.iiht.eva.interviewtkr.dto.InterviewRepository;
 import com.iiht.eva.interviewtkr.dto.UserRepository;
 import com.iiht.eva.interviewtkr.entity.*;
 import com.iiht.eva.interviewtkr.exception.InvalidData;
-import com.iiht.eva.interviewtkr.utils.InterviewValidator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
